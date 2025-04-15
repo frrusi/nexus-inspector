@@ -1,0 +1,12 @@
+[Unit]
+Description=
+Wants=nexus_inspector.timer
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "/home/frrusi/work/nexus-inspector/nexus_inspector_scheduler.sh --config /home/frrusi/work/nexus-inspector/config.json"
+PrivateTmp=yes
+User=root
+
+[Install]
+WantedBy=multi-user.target

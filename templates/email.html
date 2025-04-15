@@ -1,0 +1,56 @@
+FROM: UploadControl <${MAILFROM}>
+To: ${MAILTO}
+Subject: ${SUBJECT}
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="8dd6e091e317e79"
+
+--8dd6e091e317e79
+Content-Type: text/html; charset="UTF-8"
+Content-Disposition: inline
+
+<html>
+	<body>
+		<table align=center width="100%" style="border-collapse:collapse; max-width: 600px; border: 1px solid #ddd;">
+			<tr>
+				<td style="padding: 20px; text-align: center; background-color: #990909; font-size: 24px; font-weight: bold;">
+					Результат проверки ${REPOSITORY}
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 20px;">
+					<p style="font-size: 16px;">
+						В репозитории <a href="${REPOSITORY_URL}">${REPOSITORY}</a> найдены артефакты, 
+						загруженные неавторизованным пользователем (!= <b>${AUTHORISED_ACCOUNT}</b>)
+					</p>
+					<table width="100%" style="text-align: center; margin: 20px 0; border-collapse: collapse;">
+						<tr style="background-color: #f1f1f1;">
+							<th style="padding: 10px; border: 1px solid #ddd;">Артефакт</th>
+							<th style="padding: 10px; border: 1px solid #ddd;">Пользователь</th>
+						</tr>
+						${ARTIFACTS}
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding: 20px; background-color: #f1f1f1; text-align: center;">
+					<table width="100%" style="font-family: Arial, sans-serif; font-size: 20px; color: #555; text-align: center; border-top: 1px solid #ddd;">
+						<tr>
+							<td style="padding: 15px 0 0 0; font-size: 12px; color: #aaa;">
+								<p style="margin: 0 0 5px 0;">UploadControl v1.0.0</p>
+								<p style="margin: 0;">DevSecOps © ${CURRENT_YEAR}</p>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+
+--8dd6e091e317e79
+Content-Type: application/json
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="${REPORTFILE_NAME}"
+
+${ATTACHMENT}
+--8dd6e091e317e79--

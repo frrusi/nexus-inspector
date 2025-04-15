@@ -1,0 +1,16 @@
+{
+  "repositories": [
+    {
+      "name": "test",
+      "enabled": true,
+      "schedule": {
+        "hour": 2,
+        "minute": 15
+      },
+      "recipients": [
+        "test@domain.com"
+      ]
+    }
+  ]
+}
+  
