@@ -1,0 +1,12 @@
+[Unit]
+Description=
+Requires=nexus_inspector.service
+
+[Timer]
+Unit=nexus_inspector.service
+OnCalendar=hourly
+AccuracySec=5m
+Persistent=true
+
+[Install]
+WantedBy=timers.target
